@@ -1,27 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../services/authService";
 
 export default function LoginPage() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("usuario@email.com");
-  const [password, setPassword] = useState("********");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     setError("");
 
-    // UI primeiro: por enquanto simula login.
-    // No próximo passo, aqui vira chamada real da API e salva token de verdade.
-    if (!email.trim() || !password.trim()) {
-      setError("Preencha email e senha.");
-      return;
+    try {
+      await login(email, password);
+      navigate("/carros");
+    } catch (err) {
+      const msg =
+        err?.response?.data?.message ||
+        err?.message ||
+        "Falha ao realizar login.";
+      setError(msg);
     }
-
-    // token fake só para liberar navegação e montar telas
-    localStorage.setItem("token", "TOKEN_FAKE_PARA_UI");
-    navigate("/carros");
   }
 
   return (

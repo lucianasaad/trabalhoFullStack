@@ -137,3 +137,22 @@
 .toolbar .input {
   max-width: 320px;
 }
+
+.tableScroll {
+  max-height: 420px;      /* ajuste a altura como preferir */
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+/* opcional: evita a tabela "estourar" horizontalmente */
+.tableScroll {
+  overflow-x: auto;
+}
+
+/* opcional: cabeçalho fixo */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

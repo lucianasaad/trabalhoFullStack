@@ -35,7 +35,7 @@ public class CarroController {
     }
     @GetMapping
     public ResponseEntity<List<Carro>> listarTodos(@RequestHeader(value = "page", defaultValue = "0") String page,
-                                                   @RequestHeader(value = "size", defaultValue = "10") String size) {
+                                                   @RequestHeader(value = "size", defaultValue = "100") String size) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Count", String.valueOf(carroService.count()));
         List<Carro> allCarros = carroService.getAllPaginado(Integer.parseInt(page), Integer.parseInt(size));
