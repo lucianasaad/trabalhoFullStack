@@ -18,7 +18,14 @@ export async function login(email, password) {
   return token;
 }
 
-export function logout() {
+export function logout(message) {
   localStorage.removeItem("token");
+
+  // opcional: exibir mensagem no login (aproveita o padrão do 5.1)
+  if (message) {
+    localStorage.setItem("auth_message", message);
+  }
+
   window.location.href = "/login";
 }
+

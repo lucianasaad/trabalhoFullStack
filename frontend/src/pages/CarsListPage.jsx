@@ -55,7 +55,7 @@ export default function CarsListPage() {
 
   return (
     <div className="container">
-      <Topbar onLogout={logout} />
+      <Topbar />
 
       <div className="card">
         <div className="toolbar">

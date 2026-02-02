@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/authService";
 
@@ -8,10 +8,20 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
+
+  useEffect(() => {
+    const msg = localStorage.getItem("auth_message");
+    if (msg) {
+      setInfo(msg);
+      localStorage.removeItem("auth_message");
+    }
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
+    setInfo("");
 
     try {
       await login(email, password);
@@ -56,6 +66,7 @@ export default function LoginPage() {
             Entrar
           </button>
 
+          {info && <div className="msgSuccess">{info}</div>}
           {error && <div className="msgError">{error}</div>}
         </form>
       </div>

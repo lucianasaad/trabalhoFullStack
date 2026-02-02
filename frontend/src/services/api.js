@@ -18,8 +18,14 @@ api.interceptors.response.use(
   (error) => {
     const status = error?.response?.status;
     if (status === 401 || status === 403) {
-      localStorage.removeItem("token");
-      // redireciona forçado (simples e funciona)
+      logout();
+
+      // mensagem para aparecer no login
+      localStorage.setItem(
+        "auth_message",
+        "Sessão expirada ou acesso não autorizado. Faça login novamente."
+      );
+
       window.location.href = "/login";
     }
     return Promise.reject(error);
