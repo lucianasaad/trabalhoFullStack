@@ -2,7 +2,7 @@
 
 Projeto desenvolvido como trabalho da disciplina **Desenvolvimento Full Stack com React e Spring Boot**.
 
-O objetivo é demonstrar, na prática, a construção de uma aplicação **full stack**, integrando frontend (React) e backend (Spring Boot), aplicando boas práticas de desenvolvimento, organização de código, segurança e documentação.
+O objetivo do projeto é demonstrar, na prática, a construção de uma aplicação **full stack**, integrando frontend (React) e backend (Spring Boot), aplicando boas práticas de desenvolvimento, segurança, organização de código e documentação.
 
 ---
 
@@ -14,8 +14,8 @@ O projeto está organizado em duas camadas principais:
 /frontend → Frontend (React)
 
 
-- O **backend** expõe uma API REST responsável pela autenticação, regras de negócio e persistência.
-- O **frontend** consome essa API, implementando autenticação JWT, CRUD e interface do usuário.
+- O **backend** é responsável pela autenticação, regras de negócio e persistência de dados.
+- O **frontend** consome a API REST, implementando autenticação JWT, CRUD e interface do usuário.
 
 ---
 
@@ -35,21 +35,21 @@ A aplicação gerencia **carros**, permitindo:
 ## 🛠️ Tecnologias Utilizadas
 
 ### Backend
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Spring Security
-- JWT
-- Banco de dados H2 (em memória)
-- Maven
+- Java 17  
+- Spring Boot  
+- Spring Data JPA  
+- Spring Security  
+- JWT  
+- Banco de dados H2 (em memória)  
+- Maven  
 
 ### Frontend
-- React
-- Vite
-- React Router DOM
-- Axios
-- JavaScript (ES6+)
-- HTML5 / CSS3
+- React  
+- Vite  
+- React Router DOM  
+- Axios  
+- JavaScript (ES6+)  
+- HTML5 / CSS3  
 
 ---
 
@@ -69,18 +69,12 @@ http://localhost:8080
 
 1. Acesse a pasta `frontend`
 cd frontend
-Instale as dependências:
-
-npm install
-
-Execute o projeto:
-
-npm run dev
-
+Instale as dependências: npm install
+Execute o projeto: npm run dev
 A aplicação estará disponível em: http://localhost:5173
 
 🔐 Autenticação e Segurança
-A aplicação utiliza JWT (JSON Web Token) para autenticação.
+A aplicação utiliza JWT (JSON Web Token) para autenticação e controle de acesso.
 
 O login consome a API do backend e recebe um token JWT
 
@@ -90,32 +84,29 @@ O token é enviado automaticamente nas requisições via interceptor do axios
 
 Rotas protegidas exigem token válido
 
-Em caso de erro 401 ou 403, o usuário é redirecionado para a tela de login
+Em caso de erro 401 ou 403, o token é removido e o usuário é redirecionado para a tela de login com mensagem informativa
+
+🔗 Integração Frontend ↔ Backend
+Comunicação realizada via API REST
+
+Endpoints centralizados em um arquivo de contrato
+
+Configuração de proxy no Vite para evitar problemas de CORS em ambiente de desenvolvimento
 
 Arquivos principais:
 
+frontend/vite.config.js
+
 frontend/src/services/api.js
 
-frontend/src/services/authService.js
-
-frontend/src/routes/ProtectedRoute.jsx
-
-🔗 Integração Frontend ↔ Backend
-A comunicação é feita via API REST
-
-As rotas da API foram centralizadas em um arquivo de contrato
-
-Foi configurado proxy no Vite para evitar problemas de CORS durante o desenvolvimento
-
-Arquivos relacionados:
-
-frontend/vite.config.js (proxy)
-
 frontend/src/services/endpoints.js
+
+frontend/src/services/authService.js
 
 frontend/src/services/carsService.js
 
 📄 Funcionalidades Implementadas
+
  Login com autenticação JWT
 
  Proteção de rotas
@@ -128,20 +119,11 @@ frontend/src/services/carsService.js
 
  Exclusão de carros (DELETE)
 
- Logout seguro
+ Logout seguro e centralizado
 
- Tratamento de erros e sessão expirada
+ Tratamento de sessão expirada (401/403)
 
  Tabela com barra de rolagem para grandes volumes de dados
-
-📌 Documentação e Evidências
-O projeto possui documentação em formato PDF, contendo:
-
-Descrição das etapas de desenvolvimento
-
-Prints das funcionalidades em execução
-
-Referência direta aos arquivos de código responsáveis por cada funcionalidade
 
 📦 Controle de Versão
 Projeto versionado com Git
@@ -152,9 +134,16 @@ Utilização de .gitignore para exclusão de dependências e artefatos de build
 
 Commits organizados por funcionalidade
 
-🚧 Status do Projeto
+📄 Documentação
+O projeto possui documentação em formato PDF, contendo:
 
-Concluído:
+Descrição detalhada das etapas de desenvolvimento
+
+Evidências (prints) das funcionalidades em execução
+
+Referência direta aos arquivos de código responsáveis por cada funcionalidade
+
+🚧 Status do Projeto:
 
  Passo 1 – Configuração e execução do backend
 
@@ -164,12 +153,7 @@ Concluído:
 
  Passo 4 – Integração real Frontend ↔ Backend (JWT + CRUD)
 
- Em desenvolvimento
+ Passo 5 – Segurança e melhorias (sessão expirada e logout)
 
- Passo 5 – Melhorias e segurança avançada
-
-
-
-👩‍💻 Autora
+ 👩‍💻 Autora
 Luciana Mara da Silva Saad
-
