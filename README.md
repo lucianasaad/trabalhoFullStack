@@ -147,7 +147,7 @@ Referência direta aos arquivos de código responsáveis por cada funcionalidade
 
  Passo 1 – Configuração e execução do backend
 
- Passo 2 – Exploração da API (Postman/Insomnia)
+ Passo 2 – Exploração da API (Postman)
 
  Passo 3 – Estrutura inicial do frontend React
 
